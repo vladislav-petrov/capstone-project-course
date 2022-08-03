@@ -1,9 +1,7 @@
-// import { useState } from 'react';
 import './CategoryList.scss';
-import CategoryListItem from '../CategoryListItem/CategoryListItem';
+import CategoryListItem from './CategoryListItem/CategoryListItem';
 
 const CategoryList = function() {
-  // const [categories, setCategories] = useState([]);
   const categories = [
     {
       id: '1',
