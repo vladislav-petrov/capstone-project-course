@@ -18,6 +18,12 @@ const NavigationBar = function() {
         >
           Shop
         </Link>
+        <Link
+          className="navigation-bar__link"
+          to="/sign-in"
+        >
+          Sign In
+        </Link>
       </nav>
     </div>
   );
