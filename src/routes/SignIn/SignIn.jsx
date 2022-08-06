@@ -1,4 +1,6 @@
 import { Fragment } from 'react';
+import SignUpForm from '../../components/Forms/SignUpForm/SignUpForm';
+
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth
@@ -8,7 +10,7 @@ const SignIn = function() {
   const logInGoogleUser = async function() {
     try {
       const { user } = await signInWithGooglePopup();
-      const userDocRef = await createUserDocumentFromAuth(user);
+      await createUserDocumentFromAuth(user);
     } catch (error) {
       console.log(error.message);
     }
@@ -19,6 +21,7 @@ const SignIn = function() {
       <button onClick={logInGoogleUser}>
         Sign in with Google
       </button>
+      <SignUpForm />
     </Fragment>
   );
 }
