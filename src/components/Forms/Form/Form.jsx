@@ -17,11 +17,14 @@ const Form = function(props) {
           />
         );
       })}
-      <Button
-        type="submit"
-      >
-        {props.submitButtonValue}
-      </Button>
+      <div className='buttons'>
+        <Button
+          type="submit"
+        >
+          {props.submitButtonValue}
+        </Button>
+        {props.children}
+      </div>
     </form>
   );
 }

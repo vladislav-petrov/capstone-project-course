@@ -5,10 +5,19 @@ const BUTTON_TYPE_CLASSES = {
   inverted: 'inverted'
 };
 
-const Button = function({ buttonType, children }) {
+const Button = function({
+  type,
+  buttonType,
+  children,
+  onClick
+}) {
   return (
-    <button className={`button ${BUTTON_TYPE_CLASSES[buttonType] ?
-      BUTTON_TYPE_CLASSES[buttonType] : ''}`}>
+    <button
+      className={`button ${BUTTON_TYPE_CLASSES[buttonType] ?
+        BUTTON_TYPE_CLASSES[buttonType] : ''}`}
+      type={type}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

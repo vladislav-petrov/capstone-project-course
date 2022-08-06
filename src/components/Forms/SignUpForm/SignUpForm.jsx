@@ -38,9 +38,6 @@ const defaultItemsData = [
   }
 ];
 
-const title = 'Sign up with your email and password';
-const submitButtonValue = 'Sign Up';
-
 const SignUpForm = function() {
   const [itemsData, setItemsData] = useState(defaultItemsData);
 
@@ -97,10 +94,10 @@ const SignUpForm = function() {
   return (
     <div className="sign-up-form">
       <h2>Don't have an account?</h2>
-      <span>{title}</span>
+      <span>Sign up with your email and password</span>
       <Form
         itemsData={itemsData}
-        submitButtonValue={submitButtonValue}
+        submitButtonValue="Sign Up"
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />

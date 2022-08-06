@@ -20,7 +20,7 @@ const NavigationBar = function() {
         </Link>
         <Link
           className="navigation-bar__link"
-          to="/sign-in"
+          to="/auth"
         >
           Sign In
         </Link>
