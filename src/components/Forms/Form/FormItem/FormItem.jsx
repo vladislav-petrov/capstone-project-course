@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import './FormItem.scss';
 
 const FormItem = function(props) {
   const {
@@ -9,16 +9,19 @@ const FormItem = function(props) {
   } = props.data;
 
   return (
-    <Fragment>
-      <label>{label}</label>
+    <div className="form-item">
       <input
+        className="form-item__input"
         name={name}
         type={type}
         value={value}
         required
         onChange={(event) => props.handleChange(name, event.target.value)}
       />
-    </Fragment>
+      <label className={`${value.length ? 'shrink' : ''} form-item__label`}>
+        {label}
+      </label>
+    </div>
   );
 }
 

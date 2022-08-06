@@ -1,5 +1,5 @@
 import FormItem from './FormItem/FormItem';
-import FormSubmitItem from './FormSubmitItem/FormSubmitItem';
+import Button from '../../Button/Button';
 
 const Form = function(props) {
   return (
@@ -17,7 +17,11 @@ const Form = function(props) {
           />
         );
       })}
-      <FormSubmitItem value={props.submitItemValue} />
+      <Button
+        type="submit"
+      >
+        {props.submitButtonValue}
+      </Button>
     </form>
   );
 }

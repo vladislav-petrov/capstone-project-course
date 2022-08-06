@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './SignUpForm.scss';
 import Form from '../Form/Form';
 
 import {
@@ -38,7 +39,7 @@ const defaultItemsData = [
 ];
 
 const title = 'Sign up with your email and password';
-const submitItemValue = 'Sign Up';
+const submitButtonValue = 'Sign Up';
 
 const SignUpForm = function() {
   const [itemsData, setItemsData] = useState(defaultItemsData);
@@ -94,11 +95,12 @@ const SignUpForm = function() {
   }
 
   return (
-    <div>
-      <h2>{title}</h2>
+    <div className="sign-up-form">
+      <h2>Don't have an account?</h2>
+      <span>{title}</span>
       <Form
         itemsData={itemsData}
-        submitItemValue={submitItemValue}
+        submitButtonValue={submitButtonValue}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
