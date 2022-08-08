@@ -1,7 +1,6 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import './SignUpForm.scss';
 import Form from '../Form/Form';
-import { UserContext } from '../../../contexts/UserContext';
 
 import {
   createUserDocumentFromAuth,
@@ -41,7 +40,6 @@ const defaultItemsData = [
 
 const SignUpForm = function() {
   const [itemsData, setItemsData] = useState(defaultItemsData);
-  const { setCurrentUser } = useContext(UserContext);
 
   const handleChange = function(name, value) {
     setItemsData(itemsData.map((itemData) => {
@@ -71,14 +69,11 @@ const SignUpForm = function() {
         return;
       }
 
-      const user = await createAuthUserWithEmailAndPassword(
+      await createAuthUserWithEmailAndPassword(
         displayName,
         email,
         password
       );
-
-      setCurrentUser(user);
-      await createUserDocumentFromAuth(user);
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         alert('Can not create user, email already in use');

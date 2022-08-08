@@ -6,12 +6,11 @@ import { UserContext } from '../../contexts/UserContext';
 import { signOutUser } from '../../utils/firebase/firebase';
 
 const NavigationBar = function() {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   const handleClick = async function() {
     try {
       await signOutUser();
-      setCurrentUser(null);
     } catch (error) {
       console.log(error.message);
     }
