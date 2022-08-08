@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import './SignInForm.scss';
 import Form from '../Form/Form';
 import Button from '../../Button/Button';
+import { UserContext } from '../../../contexts/UserContext';
 
 import {
   signInAuthUserWithEmailAndPassword,
@@ -28,10 +29,12 @@ const defaultItemsData = [
 
 const SignInForm = function() {
   const [itemsData, setItemsData] = useState(defaultItemsData);
+  const { setCurrentUser } = useContext(UserContext);
 
   const signInWithGoogle = async function() {
     try {
       const { user } = await signInWithGooglePopup();
+      setCurrentUser(user);
       await createUserDocumentFromAuth(user);
     } catch (error) {
       console.log(error.message);
@@ -55,7 +58,7 @@ const SignInForm = function() {
         itemsData.find((itemData) => itemData.name === 'password').value;
 
       const { user } = await signInAuthUserWithEmailAndPassword(email, password);
-      console.log(user)
+      setCurrentUser(user);
     } catch (error) {
       if (error.code === 'auth/wrong-password') {
         alert('Incorrect password for email');
