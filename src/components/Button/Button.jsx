@@ -6,17 +6,15 @@ const BUTTON_TYPE_CLASSES = {
 };
 
 const Button = function({
-  type,
   buttonType,
   children,
-  onClick
+  ...otherProps
 }) {
   return (
     <button
       className={`button ${BUTTON_TYPE_CLASSES[buttonType] ?
         BUTTON_TYPE_CLASSES[buttonType] : ''}`}
-      type={type}
-      onClick={onClick}
+      {...otherProps}
     >
       {children}
     </button>
