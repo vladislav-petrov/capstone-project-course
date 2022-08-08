@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './NavigationBar.scss';
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg';
-import { UserContext } from '../../contexts/UserContext';
+import { UserContext } from '../../contexts/UserContext/UserContext';
 import { signOutUser } from '../../utils/firebase/firebase';
 
 const NavigationBar = function() {
