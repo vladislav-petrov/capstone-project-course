@@ -12,7 +12,7 @@ const Shop = function() {
         return (
           <ProductCard
             key={product.id}
-            data={product}
+            product={product}
           />
         );
       })}

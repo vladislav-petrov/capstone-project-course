@@ -6,7 +6,7 @@ import { CartContext } from '../../contexts/CartContext/CartContext';
 const CartIcon = function() {
   const {
     isDropdownOpen,
-    cartItems,
+    itemsQuantity,
     toggleDropdown
   } = useContext(CartContext);
 
@@ -20,7 +20,7 @@ const CartIcon = function() {
       onClick={handleClick}
     >
       <ShoppingIcon className="cart-icon__icon" />
-      <span className="cart-icon__item-count">{cartItems.length}</span>
+      <span className="cart-icon__item-count">{itemsQuantity}</span>
     </div>
   );
 }
