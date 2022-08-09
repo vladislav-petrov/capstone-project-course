@@ -5,10 +5,11 @@ import { CartContext } from '../../contexts/CartContext/CartContext';
 
 const ProductCard = function(props) {
   const { name, price, imageUrl } = props.product;
-  const { addItemToCart } = useContext(CartContext)
+  const { isDropdownOpen, toggleDropdown, addItemToCart } = useContext(CartContext)
 
   const handleAddProductToCart = function() {
-    addItemToCart(props.product);
+    addItemToCart(props.product, true);
+    if (!isDropdownOpen) toggleDropdown(!isDropdownOpen);
   }
 
   return (
