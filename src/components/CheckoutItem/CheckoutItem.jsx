@@ -1,5 +1,4 @@
 import './CheckoutItem.scss';
-import Button from '../Button/Button';
 
 const CheckoutItem = function(props) {
   const {name, quantity, price, imageUrl} = props.item;
