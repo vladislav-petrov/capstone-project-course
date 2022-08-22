@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, Fragment } from 'react';
 import './Shop.scss';
 import { CategoriesContext } from '../../contexts/CategoriesContext/CategoriesContext';
 import ProductCard from '../../components/ProductCard/ProductCard';
@@ -8,20 +8,30 @@ const Shop = function() {
   const categoriesArray = Object.values(categories);
 
   return (
-    <div className="shop">
-      {categoriesArray.reduce((arr, category) => {
-        const categoryProducts = category.items.map((product) => {
+    <Fragment>
+      {
+        categoriesArray.map((category) => {
           return (
-            <ProductCard
-              key={product.id}
-              product={product}
-            />
-          );
-        });
+            <Fragment key={category.title.toLowerCase()}>
+              <h2>{category.title}</h2>
 
-        return arr.concat(categoryProducts);
-      }, [])}
-    </div>
+              <div className="shop">
+                {
+                  category.items.map((product) => {
+                    return (
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                      />
+                    );
+                  })
+                }
+              </div>
+            </Fragment>
+          );
+        })
+      }
+    </Fragment>
   );
 }
 
