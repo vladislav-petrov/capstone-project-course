@@ -1,21 +1,26 @@
 import { useContext } from 'react';
 import './Shop.scss';
-import { ProductsContext } from '../../contexts/ProductsContext/ProductsContext';
+import { CategoriesContext } from '../../contexts/CategoriesContext/CategoriesContext';
 import ProductCard from '../../components/ProductCard/ProductCard';
 
 const Shop = function() {
-  const { products }  = useContext(ProductsContext);
+  const categories = useContext(CategoriesContext);
+  const categoriesArray = Object.values(categories);
 
   return (
     <div className="shop">
-      {products.map((product) => {
-        return (
-          <ProductCard
-            key={product.id}
-            product={product}
-          />
-        );
-      })}
+      {categoriesArray.reduce((arr, category) => {
+        const categoryProducts = category.items.map((product) => {
+          return (
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
+          );
+        });
+
+        return arr.concat(categoryProducts);
+      }, [])}
     </div>
   );
 }

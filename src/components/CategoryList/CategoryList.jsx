@@ -1,43 +1,20 @@
+import { useContext } from 'react';
 import './CategoryList.scss';
+import { CategoriesContext } from '../../contexts/CategoriesContext/CategoriesContext';
 import CategoryListItem from './CategoryListItem/CategoryListItem';
 
 const CategoryList = function() {
-  const categories = [
-    {
-      id: '1',
-      title: 'Hats',
-      imageURL: 'https://i.ibb.co/cvpntL1/hats.png'
-    },
-    {
-      id: '2',
-      title: 'Jackets',
-      imageURL: 'https://i.ibb.co/px2tCc3/jackets.png'
-    },
-    {
-      id: '3',
-      title: 'Sneakers',
-      imageURL: 'https://i.ibb.co/0jqHpnp/sneakers.png'
-    },
-    {
-      id: '4',
-      title: 'Womens',
-      imageURL: 'https://i.ibb.co/GCCdy8t/womens.png'
-    },
-    {
-      id: '5',
-      title: 'Mens',
-      imageURL: 'https://i.ibb.co/R70vBrQ/men.png'
-    }
-  ];
+  const categories = useContext(CategoriesContext);
+  const categoriesArray = Object.entries(categories);
 
   return (
     <div className="categories">
-      {categories.map((category) => {
+      {categoriesArray.map((category) => {
         return (
           <CategoryListItem
-            key={category.id}
-            imageURL={category.imageURL}
-            title={category.title}
+            key={category[0]}
+            imageURL={category[1].imageURL}
+            title={category[1].title}
           />
         );
       })}

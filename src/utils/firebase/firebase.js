@@ -121,7 +121,6 @@ export const addCollectionAndDocuments = async function(collectionKey, objectsTo
   });
 
   await batch.commit();
-  console.log('done');
 }
 
 export const getDocuments = async function() {
@@ -130,12 +129,17 @@ export const getDocuments = async function() {
 
   const querySnapshot = await getDocs(q);
 
-  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-    const { title, items } = docSnapshot.data();
-    acc[title.toLowerCase()] = items;
+  const categories = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, imageURL, items } = docSnapshot.data();
+
+    acc[title.toLowerCase()] = {
+      title,
+      imageURL,
+      items
+    };
 
     return acc;
   }, {});
 
-  return categoryMap;
+  return categories;
 }
