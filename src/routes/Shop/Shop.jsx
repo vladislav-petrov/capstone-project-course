@@ -1,5 +1,6 @@
 import { useContext, Fragment } from 'react';
-import './Shop.scss';
+import { Link } from 'react-router-dom';
+import './Category.scss';
 import { CategoriesContext } from '../../contexts/CategoriesContext/CategoriesContext';
 import ProductCard from '../../components/ProductCard/ProductCard';
 
@@ -12,12 +13,19 @@ const Shop = function() {
       {
         categoriesArray.map((category) => {
           return (
-            <Fragment key={category.title.toLowerCase()}>
-              <h2>{category.title}</h2>
+            <div
+              className="shop-category"
+              key={category.title.toLowerCase()}
+            >
+              <Link to={category.title.toLowerCase()}>
+                <h2 className="shop-category__title">
+                  {category.title}
+                </h2>
+              </Link>
 
-              <div className="shop">
+              <div className="shop-category__items">
                 {
-                  category.items.map((product) => {
+                  category.items.slice(0, 4).map((product) => {
                     return (
                       <ProductCard
                         key={product.id}
@@ -27,7 +35,7 @@ const Shop = function() {
                   })
                 }
               </div>
-            </Fragment>
+            </div>
           );
         })
       }

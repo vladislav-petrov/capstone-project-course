@@ -1,8 +1,12 @@
+import { Link } from 'react-router-dom';
 import './CategoryListItem.scss';
 
 const CategoryListItem = function(props) {
   return (
-    <div className="category">
+    <Link
+      className="category"
+      to={`shop/${props.title.toLowerCase()}`}
+    >
       <div
         className="category__background-image"
         style={{
@@ -13,7 +17,7 @@ const CategoryListItem = function(props) {
         <h2 className="category__info-title">{props.title}</h2>
         <span className="category__info-subtitle">Shop Now</span>
       </div>
-    </div>
+    </Link>
   );
 }
 
