@@ -1,6 +1,6 @@
 import { useContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import './Category.scss';
+import './ShopCategory.scss';
 import { CategoriesContext } from '../../contexts/CategoriesContext/CategoriesContext';
 import ProductCard from '../../components/ProductCard/ProductCard';
 
