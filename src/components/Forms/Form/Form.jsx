@@ -19,9 +19,7 @@ const Form = function(props) {
         );
       })}
       <ButtonsWrapper>
-        <Button
-          type="submit"
-        >
+        <Button type="submit">
           {props.submitButtonValue}
         </Button>
         {props.children}

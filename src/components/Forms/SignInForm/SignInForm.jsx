@@ -8,6 +8,7 @@ import {
 } from '../../../utils/firebase/firebase';
 
 import { SignInFormWrapper } from './SignInFormStyles';
+import { BUTTON_TYPE_CLASSES } from '../../Button/Button';
 
 const defaultItemsData = [
   {
@@ -79,7 +80,7 @@ const SignInForm = function() {
       >
         <Button
           type="button"
-          buttonType="google"
+          buttonType={BUTTON_TYPE_CLASSES.google}
           onClick={signInWithGoogle}
         >
           Google Sign In
