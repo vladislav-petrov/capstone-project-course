@@ -11,9 +11,7 @@ const CategoryListItem = function(props) {
     <CategoryLink to={`shop/${props.title.toLowerCase()}`}>
       <BackgroundImage
         className="background-image"
-        style={{
-          backgroundImage: `url(${props.imageURL})`
-        }}
+        imageURL={props.imageURL}
       />
       <Info className="info">
         <InfoTitle>{props.title}</InfoTitle>
