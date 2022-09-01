@@ -1,4 +1,8 @@
-import './FormItem.scss';
+import {
+  FormItemWrapper,
+  Input,
+  Label
+} from './FormItemStyles';
 
 const FormItem = function(props) {
   const {
@@ -9,19 +13,18 @@ const FormItem = function(props) {
   } = props.data;
 
   return (
-    <div className="form-item">
-      <input
-        className="form-item__input"
+    <FormItemWrapper>
+      <Input
         name={name}
         type={type}
         value={value}
         required
         onChange={(event) => props.handleChange(name, event.target.value)}
       />
-      <label className={`${value.length ? 'shrink' : ''} form-item__label`}>
+      <Label shrink={value.length}>
         {label}
-      </label>
-    </div>
+      </Label>
+    </FormItemWrapper>
   );
 }
 
