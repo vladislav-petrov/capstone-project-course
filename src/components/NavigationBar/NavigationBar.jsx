@@ -1,12 +1,18 @@
 import { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import './NavigationBar.scss';
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg';
 import { UserContext } from '../../contexts/UserContext/UserContext';
 import { signOutUser } from '../../utils/firebase/firebase';
 import CartIcon from '../CartIcon/CartIcon';
 import CartDropdown from '../CartDropdown/CartDropdown';
 import { CartContext } from '../../contexts/CartContext/CartContext';
+
+import {
+  NavigationBarWrapper,
+  NavigationBarLogo,
+  NavigationBarLinks,
+  NavigationBarLink
+} from './NavigationBarStyles';
 
 const NavigationBar = function() {
   const { currentUser } = useContext(UserContext);
@@ -21,43 +27,31 @@ const NavigationBar = function() {
   }
 
   return (
-    <div className="navigation-bar">
-      <Link
-        className="navigation-bar__logo"
-        to="/"
-      >
-        <CrownLogo className="navigation-bar__logo-image" />
-      </Link>
-      <nav className="navigation-bar__links">
-        <Link
-          className="navigation-bar__link"
-          to="/shop"
-        >
+    <NavigationBarWrapper>
+      <NavigationBarLogo to="/">
+        <CrownLogo />
+      </NavigationBarLogo>
+
+      <NavigationBarLinks>
+        <NavigationBarLink to="/shop">
           Shop
-        </Link>
+        </NavigationBarLink>
         {
           currentUser ? (
-            <Fragment>
-              <span
-                className="navigation-bar__link"
-                onClick={handleClick}
-              >
-                Sign Out
-              </span>
-            </Fragment>
+            <NavigationBarLink as="span" onClick={handleClick}>
+              Sign Out
+            </NavigationBarLink>
           ) : (
-            <Link
-              className="navigation-bar__link"
-              to="/auth"
-            >
+            <NavigationBarLink to="/auth">
               Sign In
-            </Link>
+            </NavigationBarLink>
           )
         }
         <CartIcon />
-      </nav>
+      </NavigationBarLinks>
+
       {isDropdownOpen ? <CartDropdown /> : null}
-    </div>
+    </NavigationBarWrapper>
   );
 }
 
