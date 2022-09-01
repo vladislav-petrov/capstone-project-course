@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import './SignUpForm.scss';
+import './SignUpFormStyles.jsx';
 import Form from '../Form/Form';
 
 import {
-  createUserDocumentFromAuth,
   createAuthUserWithEmailAndPassword
 } from '../../../utils/firebase/firebase';
+
+import { SignUpFormWrapper } from './SignUpFormStyles';
 
 const defaultItemsData = [
   {
@@ -84,7 +85,7 @@ const SignUpForm = function() {
   }
 
   return (
-    <div className="sign-up-form">
+    <SignUpFormWrapper>
       <h2>Don't have an account?</h2>
       <span>Sign up with your email and password</span>
       <Form
@@ -93,7 +94,7 @@ const SignUpForm = function() {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
-    </div>
+    </SignUpFormWrapper>
   );
 }
 
