@@ -1,4 +1,14 @@
-import './CheckoutItem.scss';
+import {
+  CheckoutItemWrapper,
+  ImageWrapper,
+  Image,
+  Name,
+  Quantity,
+  QuantityArrow,
+  QuantityValue,
+  Price,
+  ButtonRemove
+} from './CheckoutItemStyles';
 
 const CheckoutItem = function(props) {
   const {name, quantity, price, imageUrl} = props.item;
@@ -16,39 +26,34 @@ const CheckoutItem = function(props) {
   }
 
   return (
-    <div className="checkout-item">
-      <div className="checkout-item__image">
-        <img
+    <CheckoutItemWrapper>
+      <ImageWrapper>
+        <Image
           src={imageUrl}
           alt={name}
         />
-      </div>
+      </ImageWrapper>
 
-      <span className="checkout-item__name">{name}</span>
+      <Name>{name}</Name>
 
-      <span className="checkout-item__quantity">
-        <div
-          className="checkout-item__quantity-arrow"
-          onClick={handleRemoveItemButtonClick}
-        >
+      <Quantity>
+        <QuantityArrow onClick={handleRemoveItemButtonClick}>
           &#10094;
-        </div>
-        <span className="checkout-item__quantity-value">{quantity}</span>
-        <div
-          className="checkout-item__quantity-arrow"
-          onClick={handleAddItemButtonClick}
-        >
+        </QuantityArrow>
+
+        <QuantityValue>{quantity}</QuantityValue>
+
+        <QuantityArrow onClick={handleAddItemButtonClick}>
           &#10095;
-        </div>
-      </span>
+        </QuantityArrow>
+      </Quantity>
 
-      <span className="checkout-item__price">{price}</span>
+      <Price>{price}</Price>
 
-      <div
-        className="checkout-item__btn-remove"
-        onClick={handleRemovePositionButtonClick}
-      >&#10005;</div>
-    </div>
+      <ButtonRemove onClick={handleRemovePositionButtonClick}>
+        &#10005;
+      </ButtonRemove>
+    </CheckoutItemWrapper>
   );
 }
 
