@@ -1,5 +1,6 @@
 import FormItem from './FormItem/FormItem';
 import Button from '../../Button/Button';
+import { ButtonsWrapper } from './FormStyles';
 
 const Form = function(props) {
   return (
@@ -17,14 +18,14 @@ const Form = function(props) {
           />
         );
       })}
-      <div className='buttons'>
+      <ButtonsWrapper>
         <Button
           type="submit"
         >
           {props.submitButtonValue}
         </Button>
         {props.children}
-      </div>
+      </ButtonsWrapper>
     </form>
   );
 }
