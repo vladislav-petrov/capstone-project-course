@@ -1,14 +1,14 @@
 import { useContext } from 'react';
-import './CategoryList.scss';
 import { CategoriesContext } from '../../contexts/CategoriesContext/CategoriesContext';
 import CategoryListItem from './CategoryListItem/CategoryListItem';
+import { CategoriesWrapper } from './CategoryListStyles';
 
 const CategoryList = function() {
   const categories = useContext(CategoriesContext);
   const categoriesArray = Object.entries(categories);
 
   return (
-    <div className="categories">
+    <CategoriesWrapper>
       {categoriesArray.map((category) => {
         return (
           <CategoryListItem
@@ -18,7 +18,7 @@ const CategoryList = function() {
           />
         );
       })}
-    </div>
+    </CategoriesWrapper>
   );
 }
 
