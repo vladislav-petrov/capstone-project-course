@@ -1,8 +1,14 @@
 import { useContext, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import './ShopCategory.scss';
 import { CategoriesContext } from '../../contexts/CategoriesContext/CategoriesContext';
 import ProductCard from '../../components/ProductCard/ProductCard';
+
+import {
+  Category,
+  CategoryLink,
+  CategoryTitle,
+  CategoryItems
+} from './ShopStyles';
 
 const Shop = function() {
   const categories = useContext(CategoriesContext);
@@ -13,17 +19,14 @@ const Shop = function() {
       {
         categoriesArray.map((category) => {
           return (
-            <div
-              className="shop-category"
-              key={category.title.toLowerCase()}
-            >
-              <Link to={category.title.toLowerCase()}>
-                <h2 className="shop-category__title">
+            <Category key={category.title.toLowerCase()}>
+              <CategoryLink to={category.title.toLowerCase()}>
+                <CategoryTitle>
                   {category.title}
-                </h2>
-              </Link>
+                </CategoryTitle>
+              </CategoryLink>
 
-              <div className="shop-category__items">
+              <CategoryItems>
                 {
                   category.items.slice(0, 4).map((product) => {
                     return (
@@ -34,8 +37,8 @@ const Shop = function() {
                     );
                   })
                 }
-              </div>
-            </div>
+              </CategoryItems>
+            </Category>
           );
         })
       }

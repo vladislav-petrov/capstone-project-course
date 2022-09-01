@@ -1,7 +1,12 @@
 import { useContext } from 'react';
-import '../ShopCategory.scss';
 import { CategoriesContext } from '../../../contexts/CategoriesContext/CategoriesContext';
 import ProductCard from '../../../components/ProductCard/ProductCard';
+
+import {
+  Category,
+  CategoryTitle,
+  CategoryItems
+} from '../ShopStyles';
 
 const ShopCategory = function(props) {
   const categories = useContext(CategoriesContext);
@@ -9,12 +14,12 @@ const ShopCategory = function(props) {
 
   return (
     category ?
-      <div className="shop-category">
-        <h2 className="shop-category__title">
+      <Category>
+        <CategoryTitle>
           {category.title}
-        </h2>
+        </CategoryTitle>
 
-        <div className="shop-category__items">
+        <CategoryItems>
           {
             category.items.map((product) => {
               return (
@@ -25,8 +30,8 @@ const ShopCategory = function(props) {
               );
             })
           }
-        </div>
-      </div> : ''
+        </CategoryItems>
+      </Category> : ''
   );
 }
 
