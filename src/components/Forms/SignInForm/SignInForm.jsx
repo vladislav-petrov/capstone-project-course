@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import './SignInForm.scss';
 import Form from '../Form/Form';
 import Button from '../../Button/Button';
 
 import {
   signInAuthUserWithEmailAndPassword,
-  signInWithGooglePopup,
-  createUserDocumentFromAuth
+  signInWithGooglePopup
 } from '../../../utils/firebase/firebase';
+
+import { SignInFormWrapper } from './SignInFormStyles';
 
 const defaultItemsData = [
   {
@@ -68,7 +68,7 @@ const SignInForm = function() {
   }
 
   return (
-    <div className="sign-in-form">
+    <SignInFormWrapper>
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
       <Form
@@ -85,7 +85,7 @@ const SignInForm = function() {
           Google Sign In
         </Button>
       </Form>
-    </div>
+    </SignInFormWrapper>
   );
 }
 
