@@ -1,19 +1,29 @@
-import './CartItem.scss';
+import {
+  CartItemWrapper,
+  CartItemImage,
+  CartItemDetails,
+  CartItemName,
+  CartItemPrice
+} from './CartItemStyles';
 
 const CartItem = function(props) {
   const { name, quantity, price, imageUrl } = props.item;
 
   return (
-    <div className="cart-item">
-      <img
+    <CartItemWrapper>
+      <CartItemImage
         src={imageUrl}
         alt={name}
       />
-      <div className="cart-item__details">
-        <span className="cart-item__name">{name}</span>
-        <span className="cart-item__price">{`${quantity} x ${price}`}</span>
-      </div>
-    </div>
+      <CartItemDetails>
+        <CartItemName>
+          {name}
+        </CartItemName>
+        <CartItemPrice>
+          {`${quantity} x ${price}`}
+        </CartItemPrice>
+      </CartItemDetails>
+    </CartItemWrapper>
   );
 }
 
